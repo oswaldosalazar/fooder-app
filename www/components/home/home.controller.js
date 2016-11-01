@@ -15,7 +15,7 @@
     vm.logout = authService.logout;
 
     function login() {
-      $state.go("login");
+      authService.login()
     }
 
   }
