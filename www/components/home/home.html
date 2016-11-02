@@ -11,7 +11,7 @@
       <div class="list card" ng-repeat="restaurant in view.restaurants">
 
         <div class="item item-body">
-          <img class="full-image" ng-src="{{restaurant.pic}}" alt="Restaurant Picture" />
+          <img class="full-image" ng-src="{{restaurant.image}}" alt="Restaurant Picture" />
           <h5><strong>Name:</strong>{{ restaurant.name }}</h5>
           <h5 ng-if="restaurant.hours.isOpen===open"><strong>Open:</strong>  {{ restaurant.hours.isOpen }}</h5>
           <h5>{{ restaurant.hours.status }}</h5>
