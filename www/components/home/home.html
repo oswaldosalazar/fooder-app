@@ -7,29 +7,22 @@
       </button>
     </div>
     <div ng-show="isAuthenticated">
-
-      <!-- <div class="list card" ng-repeat="card in cards">
-        <div class="item item-body">
-          <img class="full-image" ng-src="{{card.image}}" alt="Restaurant Picture" />
-          <h5><strong>Name:</strong>{{ card.name }}</h5>
-          <h5 ng-if="card.hours.isOpen===open"><strong>Open:</strong>  {{ card.hours.isOpen }}</h5>
-          <h5>{{ restaurant.hours.status }}</h5>
-          <button class="button-bar">
-            <button class="button button-small button-outline button-positive">
-              save
-            </button>
-          </button>
-        </div>
-      </div> -->
-
       <td-cards>
         <td-card ng-repeat="card in cards"
-        on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}"
-        >
-          <div class="image" ng-controller="CardCtrl">
-            <div class="no-text">NOPE</div>
-            <img ng-src="{{card.image}}">
-            <div class="yes-text">LIKE</div>
+        on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+          <div class="image card" ng-controller="CardCtrl">
+            <div class="item item-divider">
+              <h2>{{ card.name }}</h2>
+            </div>
+            <!-- <div class="no-text">NOPE</div> -->
+            <div class="item item-text-wrap">
+              <img ng-src="{{card.image}}">
+            </div>
+            <!-- <div class="yes-text">LIKE</div> -->
+            <div class="item item-divider">
+              <h3>{{ card.hours.status }}</h3>
+              <h3>{{ card.address }}</h3>
+            </div>
           </div>
         </td-card>
       </td-cards>
