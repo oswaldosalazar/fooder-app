@@ -20,11 +20,6 @@
     }
 
     //API queries inserted here
-    var ids = [];
-    var names = [];
-    var hours = []
-    var prefix = [];
-    var suffix = [];
     var combinedArray = [];
     var searchUrl = "https://api.foursquare.com/v2/venues/explore?ll=39.74,-104.99&client_id=NHF0X5EXQLHYJ3IG5FIYSJYD2R33BLQSKGGQUBSIYMXWFYA4&client_secret=5TRQLKFODOFFJW55T0FHBH3BWNW3RFAOBK24BK2BSPB2QD3C&v=20161031&section=food";
     $http.get(searchUrl)
@@ -35,19 +30,16 @@
           $http.get(venueSearchUrl)
           .then(function(venuePicsUrl) {
             var final = {}
-            final.id = elem.venue.id
-            final.name = elem.venue.name
-            final.hours = elem.venue.hours
-            final.prefix = venuePicsUrl.data.response.photos.items[1].prefix
-            final.suffix = venuePicsUrl.data.response.photos.items[1].suffix
+            final.id = elem.venue.id;
+            final.name = elem.venue.name;
+            final.hours = elem.venue.hours;
+            final.pic = venuePicsUrl.data.response.photos.items[1].prefix+'300x500'+venuePicsUrl.data.response.photos.items[1].suffix;
             combinedArray.push(final)
           })
         })
     })
     console.log(combinedArray);
     $scope.view.restaurants = combinedArray
-
-
   }
 
 }());
