@@ -12,7 +12,7 @@
 
         <div class="item item-body">
           <img class="full-image" ng-src="{{restaurant.prefix+'300x500'+restaurant.suffix}}" alt="Restaurant Picture" />
-          <h5><strong>Name:</strong> {{ restaurant.name }}</h5>
+          <h5><strong>Name:</strong>{{ restaurant.name }}</h5>
           <h5 ng-if="restaurant.hours.isOpen===open"><strong>Open:</strong>  {{ restaurant.hours.isOpen }}</h5>
           <h5>{{ restaurant.hours.status }}</h5>
           <button class="button-bar">
