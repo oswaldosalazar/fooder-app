@@ -4,8 +4,18 @@
   'use strict';
 
   angular
-    .module('app', ['ionic', 'auth0.lock', 'angular-jwt'])
-    .config(config);
+    .module('app', ['ionic', 'auth0.lock', 'angular-jwt', 'ionic.contrib.ui.tinderCards'])
+    .config(config)
+    .directive('noScroll', function($document) {
+      return {
+        restrict: 'A',
+        link: function($scope, $element, $attr) {
+          $document.on('touchmove', function(e) {
+            e.preventDefault();
+          });
+        }
+      }
+    });
 
   config.$inject = ['$stateProvider', '$urlRouterProvider', 'lockProvider', 'jwtOptionsProvider'];
 
