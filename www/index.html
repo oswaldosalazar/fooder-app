@@ -14,7 +14,9 @@
     -->
 
   <!-- ionic/angularjs js -->
+  <script src="https://code.ionicframework.com/collide/0.0.4/collide.js"></script>
   <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="https://code.ionicframework.com/contrib/ionic-contrib-tinder-cards/ionic.tdcards.js"></script>
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
@@ -33,19 +35,15 @@
   <script src="components/auth/auth.service.js"></script>
   <script src="components/home/home.controller.js"></script>
   <script src="components/login/login.controller.js"></script>
-  <script src="https://code.ionicframework.com/collide/0.0.4/collide.js"></script>
-  <script src="https://code.ionicframework.com/contrib/ionic-contrib-tinder-cards/ionic.tdcards.js"></script>
 </head>
 
-<body ng-app="app">
+<body ng-app="app" no-scroll>
   <script>
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '1757930664474023',
-        status     : true,
-        cookie     : true,
         xfbml      : true,
-        version    : 'v2.6'
+        version    : 'v2.8'
       });
     };
 

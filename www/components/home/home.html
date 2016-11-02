@@ -1,4 +1,4 @@
-<ion-view view-title="Restaurants Nearby" ng-controller="HomeController as vm">
+<ion-pane view-title="Restaurants Nearby" ng-controller="HomeController as vm">
   <ion-content class="padding">
     <div ng-hide="isAuthenticated">
       <p>Welcome to the Auth0 Ionic Sample! Please log in:</p>
@@ -7,13 +7,12 @@
       </button>
     </div>
     <div ng-show="isAuthenticated">
-      <!-- <p>Thank you for logging in!</p> -->
-      <div class="list card" ng-repeat="restaurant in view.restaurants">
 
+      <!-- <div class="list card" ng-repeat="card in cards">
         <div class="item item-body">
-          <img class="full-image" ng-src="{{restaurant.image}}" alt="Restaurant Picture" />
-          <h5><strong>Name:</strong>{{ restaurant.name }}</h5>
-          <h5 ng-if="restaurant.hours.isOpen===open"><strong>Open:</strong>  {{ restaurant.hours.isOpen }}</h5>
+          <img class="full-image" ng-src="{{card.image}}" alt="Restaurant Picture" />
+          <h5><strong>Name:</strong>{{ card.name }}</h5>
+          <h5 ng-if="card.hours.isOpen===open"><strong>Open:</strong>  {{ card.hours.isOpen }}</h5>
           <h5>{{ restaurant.hours.status }}</h5>
           <button class="button-bar">
             <button class="button button-small button-outline button-positive">
@@ -21,11 +20,23 @@
             </button>
           </button>
         </div>
-      </div>
+      </div> -->
+
+      <td-cards>
+        <td-card ng-repeat="card in cards"
+        on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}"
+        >
+          <div class="image" ng-controller="CardCtrl">
+            <div class="no-text">NOPE</div>
+            <img ng-src="{{card.image}}">
+            <div class="yes-text">LIKE</div>
+          </div>
+        </td-card>
+      </td-cards>
 
       <button class="button button-full button-dark" ng-click="vm.logout()">
         Log Out
       </button>
     </div>
   </ion-content>
-</ion-view>
+</ion-pane>
