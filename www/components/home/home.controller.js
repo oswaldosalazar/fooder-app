@@ -16,7 +16,7 @@
     });
 
   HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate', 'venueService', 'apiService'];
-  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate', 'venueService','apiService'];
+  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate', 'venueService','apiService', '$http'];
 
   function HomeController($state, authService, $scope, $http, TDCardDelegate, venueService, apiService) {
     var vm = this;
@@ -84,7 +84,7 @@
     //API queries inserted here
   }
 
-  function CardCtrl($scope, authService, TDCardDelegate, venueService, apiService) {
+  function CardCtrl($scope, authService, TDCardDelegate, venueService, apiService, $http) {
     var vm = this;
     vm.user_id = authService.userProfile.user_id;
 
@@ -95,11 +95,12 @@
       console.log('LEFT SWIPE');
       $scope.addCard();
     }
-    $scope.cardSwipedRight = function(index) {
+    $scope.cardSwipedRight = function(index, $http) {
       console.log('RIGHT SWIPE');
       vm.venue = venueService.venue[index].venueId;
       console.log(vm.user_id);
       console.log(vm.venue);
+      apiService.postVisit(vm.user_id, vm.venue)
 
       $scope.addCard();
     }
