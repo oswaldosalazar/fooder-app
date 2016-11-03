@@ -31,6 +31,11 @@
       .state('login', {
         url: '/login',
         templateUrl: 'components/login/login.html'
+      })
+
+      .state('saved', {
+        url: '/saved',
+        templateUrl: 'components/saved/saved.html'
       });
 
     // if none of the above states are matched, use this as the fallback
