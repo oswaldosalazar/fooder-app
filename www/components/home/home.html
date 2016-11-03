@@ -1,6 +1,9 @@
 <ion-pane view-title="Restaurants Nearby" ng-controller="HomeController as vm">
   <ion-content class="padding">
     <div ng-hide="isAuthenticated">
+      <button class="button button-full button-positive" ng-click="vm.login()">
+        Log In
+      </button>
       <div class="row">
         <div class="col">
         </div>
