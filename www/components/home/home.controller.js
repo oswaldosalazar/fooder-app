@@ -60,6 +60,7 @@
   function CardCtrl($scope, authService, TDCardDelegate, venueService) {
     var vm = this;
     vm.userProfile = authService.userProfile;
+    console.log(vm.userProfile)
 
     function login() {
       authService.login()
