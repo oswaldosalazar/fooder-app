@@ -1,7 +1,9 @@
 <ion-view view-title="Saved Restaurants" ng-controller="SavedController as vm">
   <ion-content class="center">
-    <div class="row">
-      <div class="col"><p ng-click="vm.speak()">{{vm.results}}</p></div>
+    <div class="row" ng-repeat="result in vm.results">
+      <div class="col">
+        {{result}}
+      </div>
     <div>
   </ion-content>
 </ion-view>
