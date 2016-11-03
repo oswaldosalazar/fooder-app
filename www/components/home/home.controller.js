@@ -23,10 +23,21 @@
     vm.login = login;
     vm.logout = authService.logout;
     vm.user = authService.userProfile;
+    vm.location = Promise.resolve (
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+      })
+    );
+
+
+    vm.location.then( function(res) {
+      console.log("Hello", res);
+    })
 
     function login() {
       authService.login()
     }
+
     //API queries inserted here
     var cardTypes = [];
     var searchUrl = "https://api.foursquare.com/v2/venues/explore?ll=39.74,-104.99&client_id=NHF0X5EXQLHYJ3IG5FIYSJYD2R33BLQSKGGQUBSIYMXWFYA4&client_secret=5TRQLKFODOFFJW55T0FHBH3BWNW3RFAOBK24BK2BSPB2QD3C&v=20161031&section=food&openNow=1";
@@ -78,4 +89,6 @@
       $scope.addCard();
     }
   }
+
+
 }());
