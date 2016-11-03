@@ -24,6 +24,16 @@
     vm.logout = authService.logout;
     vm.user = authService.userProfile;
 
+    vm.location = Promise.resolve (
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+      })
+    );
+
+    vm.viewSaved = function() {
+      $state.go("saved");
+    }
+
     function getLocation() {
       return new Promise(function(resolve, reject){
         navigator.geolocation.getCurrentPosition(function (position) {

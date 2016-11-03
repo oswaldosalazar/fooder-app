@@ -11,7 +11,8 @@
     var vm = this;
     apiService.getVisits(authService.userProfile.user_id)
       .then((results) => {
-        vm.results = results;
+        console.log(results.data);
+        vm.results = results.data;
       });
   }
 
