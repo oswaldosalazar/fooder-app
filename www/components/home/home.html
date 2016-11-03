@@ -1,9 +1,13 @@
 <ion-pane view-title="Restaurants Nearby" ng-controller="HomeController as vm">
   <ion-content class="padding">
     <div ng-hide="isAuthenticated">
-      <img src="https://pbs.twimg.com/media/CwWrVvBXgAEaWyb.jpg:large" alt="fooder" style="margin-left: 530px">
       <button class="button button-full button-positive" ng-click="vm.login()">
         Log In With Facebook
+      </button>
+    </div>
+    <div ng-hide="isAuthenticated">
+      <button ng-click="vm.login()" class="button button-full button-large button-clear button-assertive">
+        <img src="https://pbs.twimg.com/media/CwWrVvBXgAEaWyb.jpg:large" alt="fooder">
       </button>
     </div>
     <div ng-show="isAuthenticated">
