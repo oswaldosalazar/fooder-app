@@ -5,17 +5,24 @@
   angular
     .module('app')
     .controller('HomeController', HomeController)
-    .controller('CardCtrl', CardCtrl);
+    .controller('CardCtrl', CardCtrl)
+    .factory('venueService', function() {
+      return {
+          venue: {},
+          sendVenue: function (venue) {
+              this.venue = venue;
+          }
+      }
+    });
 
-  HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate'];
-  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate'];
+  HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate', 'venueService'];
+  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate', 'venueService'];
 
-  function HomeController($state, authService, $scope, $http, TDCardDelegate) {
+  function HomeController($state, authService, $scope, $http, TDCardDelegate, venueService) {
     var vm = this;
     vm.login = login;
     vm.logout = authService.logout;
     vm.user = authService.userProfile;
-    console.log(vm.user);
     function login() {
       authService.login()
     }
@@ -30,7 +37,7 @@
           $http.get(venueSearchUrl)
           .then(function(venuePicsUrl) {
             var final = {};
-            final.id = elem.venue.id;
+            final.venueId = elem.venue.id;
             final.name = elem.venue.name;
             final.hours = elem.venue.hours;
             final.address = elem.venue.location.address;
@@ -48,8 +55,9 @@
       newCard.id = Math.random();
       $scope.cards.push(angular.extend({}, newCard));
     }
+    venueService.sendVenue(cardTypes);
   }
-  function CardCtrl($scope, authService, TDCardDelegate) {
+  function CardCtrl($scope, authService, TDCardDelegate, venueService) {
     var vm = this;
     vm.userProfile = authService.userProfile;
 
@@ -62,8 +70,10 @@
     }
     $scope.cardSwipedRight = function(index) {
       console.log('RIGHT SWIPE');
-      $scope.addCard();
+      vm.venue = venueService.venue[index].venueId;
       console.log(vm.userProfile.user_id);
+      console.log(vm.venue);
+      $scope.addCard();
     }
   }
 }());
