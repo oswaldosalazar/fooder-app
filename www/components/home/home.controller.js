@@ -8,13 +8,14 @@
     .controller('CardCtrl', CardCtrl);
 
   HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate'];
-  CardCtrl.$inject = ['$scope', 'TDCardDelegate'];
+  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate'];
 
   function HomeController($state, authService, $scope, $http, TDCardDelegate) {
     var vm = this;
     vm.login = login;
     vm.logout = authService.logout;
-
+    vm.user = authService.userProfile;
+    console.log(vm.user);
     function login() {
       authService.login()
     }
@@ -48,7 +49,13 @@
       $scope.cards.push(angular.extend({}, newCard));
     }
   }
-  function CardCtrl($scope, TDCardDelegate) {
+  function CardCtrl($scope, authService, TDCardDelegate) {
+    var vm = this;
+    vm.userProfile = authService.userProfile;
+
+    function login() {
+      authService.login()
+    }
     $scope.cardSwipedLeft = function(index) {
       console.log('LEFT SWIPE');
       $scope.addCard();
@@ -56,7 +63,7 @@
     $scope.cardSwipedRight = function(index) {
       console.log('RIGHT SWIPE');
       $scope.addCard();
+      console.log(vm.userProfile.user_id);
     }
   }
-
 }());

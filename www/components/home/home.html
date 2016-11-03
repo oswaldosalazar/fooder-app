@@ -9,8 +9,8 @@
     <div ng-show="isAuthenticated">
       <td-cards>
         <td-card ng-repeat="card in cards"
-        on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
-          <div class="image card" ng-controller="CardCtrl">
+         class="card-{{$index}}">
+          <div class="image card" ng-controller="CardCtrl" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)">
             <div class="item item-divider">
               <h2>{{ card.name }}</h2>
             </div>
