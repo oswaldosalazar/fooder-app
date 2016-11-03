@@ -29,6 +29,10 @@
       })
     );
 
+    vm.viewSaved = function() {
+      $state.go("saved");
+    }
+
 
     vm.location.then( function(res) {
       console.log("Hello", res);
