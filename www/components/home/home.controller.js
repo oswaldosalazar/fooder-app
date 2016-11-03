@@ -23,6 +23,7 @@
     vm.login = login;
     vm.logout = authService.logout;
     vm.user = authService.userProfile;
+
     function login() {
       authService.login()
     }
@@ -57,14 +58,14 @@
     }
     venueService.sendVenue(cardTypes);
   }
+
   function CardCtrl($scope, authService, TDCardDelegate, venueService) {
     var vm = this;
-    vm.userProfile = authService.userProfile;
-    console.log(vm.userProfile)
+    vm.user_id = authService.userProfile.user_id;
 
-    function login() {
-      authService.login()
-    }
+    // function login() {
+    //   authService.login()
+    // }
     $scope.cardSwipedLeft = function(index) {
       console.log('LEFT SWIPE');
       $scope.addCard();
@@ -72,7 +73,7 @@
     $scope.cardSwipedRight = function(index) {
       console.log('RIGHT SWIPE');
       vm.venue = venueService.venue[index].venueId;
-      console.log(vm.userProfile.user_id);
+      console.log(vm.user_id);
       console.log(vm.venue);
       $scope.addCard();
     }
