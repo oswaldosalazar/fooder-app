@@ -15,10 +15,10 @@
       }
     });
 
-  HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate', 'venueService'];
-  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate', 'venueService'];
+  HomeController.$inject = ['$state', 'authService', '$scope', '$http', 'TDCardDelegate', 'venueService', 'apiService'];
+  CardCtrl.$inject = ['$scope', 'authService', 'TDCardDelegate', 'venueService','apiService'];
 
-  function HomeController($state, authService, $scope, $http, TDCardDelegate, venueService) {
+  function HomeController($state, authService, $scope, $http, TDCardDelegate, venueService, apiService) {
     var vm = this;
     vm.login = login;
     vm.logout = authService.logout;
@@ -70,7 +70,7 @@
     venueService.sendVenue(cardTypes);
   }
 
-  function CardCtrl($scope, authService, TDCardDelegate, venueService) {
+  function CardCtrl($scope, authService, TDCardDelegate, venueService, apiService) {
     var vm = this;
     vm.user_id = authService.userProfile.user_id;
 
