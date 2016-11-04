@@ -1,9 +1,12 @@
 <ion-view view-title="Saved Restaurants" ng-controller="SavedController as vm">
   <ion-content class="center">
-    <div class="row" ng-repeat="result in vm.results">
-      <div class="col">
-        {{result}}
+
+    <div class="card" ng-repeat="result in vm.finalResults">
+      <div class="item item-text-wrap">
+        <h2>{{ result.name }}</h2>
+        <h3>Address:{{ result.address }}</h3>
+        <img ng-src="{{result.image}}" alt="{{result.name}}" />
       </div>
-    <div>
+    </div>
   </ion-content>
 </ion-view>

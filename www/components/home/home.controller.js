@@ -88,9 +88,9 @@
     var vm = this;
     vm.user_id = authService.userProfile.user_id;
 
-    // function login() {
-    //   authService.login()
-    // }
+    function login() {
+      authService.login()
+    }
     $scope.cardSwipedLeft = function(index) {
       console.log('LEFT SWIPE');
       $scope.addCard();
