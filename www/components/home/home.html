@@ -34,7 +34,9 @@
       <button class="button button-full button-dark" ng-click="vm.logout()">
         Log Out
       </button>
-      <button ng-click="vm.viewSaved()" class="button button-clear button-outline button-positive" type="button" name="button">View Saved</button>
+      <div class="savedButton">
+        <button ng-click="vm.viewSaved()" class="button button-positive" type="button" name="button">Saved</button>
+      </div>
     </div>
   </ion-content>
 </ion-pane>
