@@ -10,6 +10,9 @@
   function SavedController($http, $scope, $state, authService, apiService) {
     var vm = this;
     vm.results =[];
+    vm.viewHome = function() {
+      $state.go("home");
+    }
     var savedResults = [];
     apiService.getVisits(authService.userProfile.user_id)
       .then((results) => {

@@ -9881,5 +9881,10 @@ a.button {
   .savedButton {
     display: flex;
     justify-content: flex-end;
-    align-items:
+  }
+  .homeButton
+  {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
   }
